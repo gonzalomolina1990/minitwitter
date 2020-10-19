@@ -1,0 +1,90 @@
+<div class="container mt-4">
+  <div class="jumbotron mt-4">
+    <h3>Modifica los datos que quieras actualizar</h3>
+
+    <form enctype="multipart/form-data" action="/editUser" method="POST">
+      <div class="form-group mb-3">
+        <label for="firstnameEdit">Nombre</label>
+        <input
+          type="text"
+          id="firstnameEdit"
+          name="firstnameEdit"
+          class="form-control"
+          value="<%- loggedUser.firstName %>"
+        />
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="lastnameEdit">Apellido</label>
+        <input
+          type="text"
+          id="lastnameEdit"
+          name="lastnameEdit"
+          class="form-control"
+          value="<%- loggedUser.lastName %>"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="emailEdit">Correo electrónico</label>
+        <input
+          type="email"
+          class="form-control"
+          name="emailEdit"
+          id="emailEdit"
+          value="<%- loggedUser.email %>"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="passwordEdit">Password</label>
+        <input
+          name="passwordEdit"
+          type="password"
+          class="form-control"
+          id="passwordEdit"
+          placeholder="Escribe tu nueva contraseña"
+        />
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="usernameEdit">Nombre de Usuario</label>
+        <input
+          type="text"
+          id="usernameEdit"
+          name="usernameEdit"
+          class="form-control"
+          value="<%- loggedUser.userName %>"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="userphotoEdit">Foto de Usuario</label>
+        <input
+          type="file"
+          id="userphotoEdit"
+          name="userphotoEdit"
+          class="form-control"
+          placeholder="Inserte Apellido..."
+        />
+      </div>
+
+      <div class="form-group mb-3">
+        <label class="d-block" for="bio">Descripción</label>
+
+        <textarea
+          type="text"
+          id="bio"
+          name="bio"
+          class="form-control d-block"
+          cols="30"
+          rows="10"
+        >
+<%- loggedUser.bio %></textarea
+        >
+      </div>
+
+      <button type="submit" class="btn btn-primary">Actualizar datos</button>
+    </form>
+  </div>
+</div>

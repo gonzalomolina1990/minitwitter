@@ -1,0 +1,44 @@
+<%- include('./partials/head.ejs'); %> <%- include('./partials/nav.ejs'); %>
+
+<div class="container">
+  <h1>Perfil de @<%- profileVisited.userName %></h1>
+  <%- include('./partials/bio.ejs'); %>
+
+  <div class="row">
+    <div class="col">
+      <% profileVisited.userTweets.reverse().forEach(twit => { %>
+
+      <div class="tweet-container">
+        <div class="row">
+          <div class="col-md-2">
+            <a href="http://localhost:3000/profile/<%-profileVisited.userName%>"
+              ><img
+                class="rounded-circle tweetAvatar"
+                src="<%- profileVisited.userPhoto %>"
+                alt="<%- profileVisited.userName %>"
+            /></a>
+          </div>
+
+          <div class="col-md-10">
+            <strong
+              ><%- profileVisited.firstName %> <%- profileVisited.lastName %>
+            </strong>
+            <a href="http://localhost:3000/profile/<%-profileVisited.userName%>"
+              ><span>@<%- profileVisited.userName %> </span></a
+            >
+
+            <p><%- twit.text %></p>
+          </div>
+        </div>
+
+        <hr />
+        <span><%- twit.createdAt %> | </span>
+        <span><i class="far fa-heart"></i> <%- twit.likes %></span>
+      </div>
+
+      <% }); %>
+    </div>
+  </div>
+</div>
+
+<%- include('./partials/scripts.ejs'); %>

@@ -1,0 +1,55 @@
+<div class="row">
+  <% if (path == "/profile" ) { %>
+  <div class="col-md-2">
+    <img
+      class="rounded-circle profileAvatar"
+      src="<%- loggedUser.userPhoto %>"
+      alt="<%- loggedUser.userName %>"
+    />
+  </div>
+
+  <div class="col-md-10">
+    <p><%- loggedUser.bio %></p>
+  </div>
+
+  <% } else { %>
+
+  <div class="col-md-2">
+    <img
+      src="<%- profileVisited.userPhoto %>"
+      alt="<%- profileVisited.userName %>"
+      class="rounded-circle profileAvatar"
+    />
+  </div>
+
+  <div class="col-md-10">
+    <%- profileVisited.bio %>
+    <hr />
+
+
+
+<% if ( loggedUser._id.toString() !== profileVisited._id.toString() ) { %>
+
+    <% if ( loggedUser.userFollowing.includes( profileVisited._id) ) { %>
+
+    <form action="/users/unfollow/<%- profileVisited.userName %>" method="post">
+      <button type="submit" class="btn btn-primary">Dejar de seguir</button>
+    </form>
+
+    <% } else { %>
+    <form action="/users/follow/<%- profileVisited.userName %>" method="post">
+      <button type="submit" class="btn btn-primary">Seguir</button>
+    </form>
+
+    <% } %>
+
+<% } %>
+
+    <span>Seguidores: <%- profileVisited.userFollowers.length %> | </span>
+    <span>Siguiendo: <%- profileVisited.userFollowing.length %></span>
+  </div>
+
+  <% } %>
+</div>
+
+

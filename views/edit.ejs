@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("partials/head") %> <%- include("partials/nav") %>
+
+  <body>
+    <div class="container">
+      <h1>Editar Usuario</h1>
+
+      <div class="row mt-5">
+        <div class="col-md-2">
+          <img
+            class="rounded-circle profileAvatar"
+            src="<%- loggedUser.userPhoto %>"
+            alt="<%- loggedUser.userName %>"
+          />
+        </div>
+
+        <div class="col-md-10">
+          <strong
+            ><%- loggedUser.firstName %> <%- loggedUser.lastName %>
+          </strong>
+          <span>@<%- loggedUser.userName %> </span>
+          <hr />
+          <p><%- loggedUser.bio %></p>
+        </div>
+      </div>
+
+      <div class="row"><%- include("partials/edit-form") %></div>
+    </div>
+    <%- include("partials/scripts") %>
+  </body>
+</html>

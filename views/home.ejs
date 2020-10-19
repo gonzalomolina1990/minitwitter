@@ -1,0 +1,109 @@
+<%- include('./partials/head.ejs'); %> <%- include('./partials/nav.ejs'); %>
+
+<div class="container">
+  <% if (path == "/profile" ) { %>
+  <h1>Perfil de @<%- loggedUser.userName %></h1>
+  <%- include('./partials/bio.ejs'); %> <% } else { %>
+
+  <h1>Feed de @<%- loggedUser.userName %></h1>
+
+  <% } %>
+
+  <div class="row">
+    <% if (path == "/profile") { %>
+
+    <div class="col-md-6">
+      <% loggedUser.userTweets.reverse().forEach(twit => { %>
+      <div class="tweet-container">
+        <div class="row">
+          <div class="col-md-2">
+            <img
+              class="rounded-circle tweetAvatar"
+              src="<%- loggedUser.userPhoto %>"
+              alt="<%- loggedUser.userName %>"
+            />
+          </div>
+
+          <div class="col-md-10">
+            <strong
+              ><%- loggedUser.firstName %> <%- loggedUser.lastName %>
+            </strong>
+            <span>@<%- loggedUser.userName %> </span>
+
+            <p><%- twit.text %></p>
+          </div>
+        </div>
+
+        <hr />
+        <span><%- twit.createdAt %> | </span>
+        <span> <i class="far fa-heart"></i> <%- twit.likes %></span>
+      </div>
+      <% }); %>
+    </div>
+
+    <% } else { %>
+
+    <div class="col-md-6">
+      <% tweets.reverse().forEach(twit => { %>
+
+      <div class="tweet-container">
+        <div class="row">
+          <div class="col-md-2">
+            <a href="http://localhost:3000/profile/<%-twit.user.userName%>"
+              ><img
+                class="rounded-circle tweetAvatar"
+                src="<%- twit.user.userPhoto %>"
+                alt="<%- twit.user.userName %>"
+            /></a>
+          </div>
+
+          <div class="col-md-10">
+            <strong
+              ><%- twit.user.firstName %> <%- twit.user.lastName %>
+            </strong>
+            <a href="http://localhost:3000/profile/<%-twit.user.userName%>"
+              ><span>@<%- twit.user.userName %> </span></a
+            >
+
+            <p><%- twit.text %></p>
+          </div>
+        </div>
+
+        <hr />
+        <span><%- twit.createdAt %> | </span>
+
+        <span>
+          <a href="http://localhost:3000/tweet/like/<%=twit._id%>" method="POST"
+            ><i class="far fa-heart"></i
+          ></a>
+          <%- twit.likes.length %></span
+        >
+      </div>
+
+      <% }); %>
+    </div>
+
+    <% } %>
+
+    <div class="col-md-6">
+      <form action="/twitear" method="POST">
+        <div class="form-group">
+          <label for="twitContent">Escribe tu twit aquí</label>
+          <textarea
+            name="twitContent"
+            id="twitContent"
+            class="form-control"
+            cols="30"
+            rows="10"
+            placeholder="¿Qué está pasando?"
+            type="text"
+          ></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Twitear</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<%- include('./partials/scripts.ejs'); %>

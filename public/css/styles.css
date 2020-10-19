@@ -1,0 +1,51 @@
+.tweet-container {
+  background-color: rgb(221, 221, 221);
+  box-shadow: 0 0 0.6rem rgba(0, 0, 0, 0.411);
+  border-radius: 1rem;
+  margin-top: 1rem;
+  padding: 2rem;
+  padding-bottom: 1rem;
+}
+
+.btn {
+  border-radius: 2rem;
+}
+
+.tweetAvatar {
+  height: 4rem;
+  width: 4rem;
+  object-fit: cover;
+}
+
+.profileAvatar {
+  height: 8rem;
+  width: 8rem;
+  object-fit: cover;
+}
+
+body {
+  background: rgb(243, 220, 251);
+  background: linear-gradient(
+    45deg,
+    rgba(243, 220, 251, 1) 0%,
+    rgba(148, 187, 233, 1) 100%
+  );
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+  padding: 1rem;
+  font-weight: bolder;
+}
+
+textarea {
+  border-radius: 2rem;
+}
+
+.jumbotron {
+  box-shadow: 0 0 0.6rem rgba(0, 0, 0, 0.411);
+  border-radius: 1rem;
+  margin-top: 1rem;
+  padding: 2rem;
+  padding-bottom: 1rem;
+}
